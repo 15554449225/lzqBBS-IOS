@@ -9,6 +9,8 @@
 import UIKit
 import PageController
 
+
+
 class CustomMenuCell: MenuCell {
     
     required init(frame: CGRect) {
@@ -36,7 +38,15 @@ class CateViewController:  PageController{
         menuBar.registerClass(CustomMenuCell.self)
         
         viewControllers = createViewControllers()
+        
+        let u = User()
+        u.saveUser(isLogin)
+
         // Do any additional setup after loading the view.
+    }
+    
+    func isLogin(isTrue:Bool){
+        print(isTrue)
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,4 +62,6 @@ class CateViewController:  PageController{
             return viewController
         }
     }
+    
+    
 }
