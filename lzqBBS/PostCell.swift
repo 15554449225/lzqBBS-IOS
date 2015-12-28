@@ -10,16 +10,21 @@ import UIKit
 
 class PostCell: UITableViewCell {
 
-    @IBOutlet var containerView: UIView!
-    @IBOutlet var lb: UILabel!
+
+    @IBOutlet var cv: UIView!
+    @IBOutlet var Title: UILabel!
+    @IBOutlet var UserName: UILabel!
+    @IBOutlet var Time: UILabel!
+    @IBOutlet var resNum: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        containerView.layer.cornerRadius = 4
-        containerView.layer.borderWidth = 1
-        containerView.layer.borderColor = UIColor(red: 0.85, green: 0.85, blue:0.85, alpha: 0.9).CGColor
-        containerView.layer.masksToBounds = true
-        //self.backgroundColor = UIColor.greenColor()
+        cv.layer.cornerRadius = 4
+        cv.layer.borderWidth = 1
+        cv.layer.borderColor = UIColor(red: 0.85, green: 0.85, blue:0.85, alpha: 0.9).CGColor
+        cv.layer.masksToBounds = true
+//        containerView.layer.
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

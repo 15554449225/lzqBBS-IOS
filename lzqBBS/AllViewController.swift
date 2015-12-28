@@ -21,7 +21,10 @@ class AllViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.estimatedRowHeight = 120;
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         let allData = forum();
         allData.getAll{result in
             let jsonStr = JSON(result)["data"]
@@ -36,9 +39,9 @@ class AllViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 75
+        return 150
     }
-    
+//
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,24 +52,14 @@ class AllViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("AllViewCell", forIndexPath: indexPath);
+        let cell = tableView.dequeueReusableCellWithIdentifier("AllViewCell", forIndexPath: indexPath) as! PostCell;
         let text = newArray[indexPath.row];
-//        cell.detailTextLabel?.text = "1"
-//        let titleLabel = UILabel(frame: CGRect(x: 20, y: 5, width: 300, height: 50))
-//        titleLabel.textColor = UIColor.blackColor()
-//        titleLabel.text = text;
-//        cell.addSubview(titleLabel)
-//        let userLabel = UILabel(frame: CGRect(x: 20, y: 27, width: 300, height: 50))
-//        userLabel.textColor = UIColor.grayColor()
-//        userLabel.text = "xiaotian 发表于  5天前"
-//        userLabel.numberOfLines = 0
-//        cell.addSubview(userLabel)
-//        cell.label.text = "ceshi"
-        cell.textLabel?.text = text;
-//        cell.detailTextLabel?.text = IDArray[indexPath.row]
-        
+//        cell.textLabel?.text = text;
+        cell.Title.text = text
+        cell.Time.text = "三分钟前"
         return cell;
     }
+
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newArray.count
@@ -83,5 +76,34 @@ class AllViewController: UITableViewController {
             viewController.Id = seletedId
         }
     }
+    
+    
+//    var prototypeCell:PostCell?
+//    
+//    private func configureCell(cell:PostCell,indexPath: NSIndexPath,isForOffscreenUse:Bool){
+//        
+//        //        let item: AnyObject = self.data[indexPath.row]
+//        //        cell.title.text = item.valueForKey("title") as? String
+//        //        cell.channelName.text
+//        cell.selectionStyle = .None;
+//    }
+//    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        
+//        if prototypeCell == nil
+//        {
+//            self.prototypeCell = self.tableView.dequeueReusableCellWithIdentifier("AllViewCell") as? PostCell
+//        }
+//        
+//        self.configureCell(prototypeCell!, indexPath: indexPath, isForOffscreenUse: false)
+//        
+//        self.prototypeCell?.setNeedsUpdateConstraints()
+//        self.prototypeCell?.updateConstraintsIfNeeded()
+//        self.prototypeCell?.setNeedsLayout()
+//        self.prototypeCell?.layoutIfNeeded()
+//        let size = self.prototypeCell!.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+//        
+//        return size.height;
+//        
+//    }
 }
 
