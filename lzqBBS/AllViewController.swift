@@ -21,6 +21,7 @@ class AllViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 235, green: 237, blue: 240, alpha: 0.9)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.estimatedRowHeight = 120;
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -39,7 +40,7 @@ class AllViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
+        return 91
     }
 //
     override func didReceiveMemoryWarning() {
