@@ -8,14 +8,22 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 class forum {
     func getAll(callback:(result:AnyObject) -> Void){
-        let url:String = "http://bbs.lzqstd.net/api/discussions"
-        Alamofire.request(.POST,url).responseJSON{ (response) in
+        let url:String = "http://discuss.flarum.org.cn/api/discussions?include=startUser,lastUser,startPost,tags&&page[offset]=20"
+        Alamofire.request(.GET,url).responseJSON{ (response) in
             if let resp = response.result.value{
                 callback(result: resp)
+            }
+        }
+    }
+    
+    func getById(id:String,callback:(result:AnyObject) -> Void){
+        let url:String = "http://discuss.flarum.org.cn/api/discussions/\(id)"
+        Alamofire.request(.GET,url).responseJSON{(response)in
+            if let resp = response.result.value{
+               callback(result: resp)
             }
         }
     }

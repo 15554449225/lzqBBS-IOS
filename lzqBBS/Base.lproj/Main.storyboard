@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pNv-Aj-nVx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -131,13 +132,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllViewCell" id="6r7-RE-ISY">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AllViewCell" id="6r7-RE-ISY" customClass="PostCell" customModule="lzqBBS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6r7-RE-ISY" id="PN5-em-GWE">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flo-3b-lwl" userLabel="lb">
+                                            <rect key="frame" x="400" y="11" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="containerView" destination="PN5-em-GWE" id="Oso-kh-1Wg"/>
+                                    <outlet property="lb" destination="flo-3b-lwl" id="uzT-49-ywv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -146,10 +159,46 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="全部" id="W6r-qh-WVY"/>
+                    <connections>
+                        <segue destination="734-5D-p6o" kind="show" identifier="showDetailSegue" id="rIq-6Q-9Nk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nXc-WU-CoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1079" y="-911"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="fyP-fJ-MCS">
+            <objects>
+                <viewController id="734-5D-p6o" customClass="DetailViewController" customModule="lzqBBS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uFf-Ej-fnR"/>
+                        <viewControllerLayoutGuide type="bottom" id="LMw-W7-ZdL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2df-H8-0IN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftG-ud-I6g">
+                                <rect key="frame" x="20" y="72" width="560" height="471"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ftG-ud-I6g" firstAttribute="top" secondItem="uFf-Ej-fnR" secondAttribute="bottom" constant="8" id="6v1-HN-8X4"/>
+                            <constraint firstItem="ftG-ud-I6g" firstAttribute="trailing" secondItem="2df-H8-0IN" secondAttribute="trailingMargin" id="KTQ-J0-RGk"/>
+                            <constraint firstItem="LMw-W7-ZdL" firstAttribute="top" secondItem="ftG-ud-I6g" secondAttribute="bottom" constant="8" id="VPS-bj-m1m"/>
+                            <constraint firstItem="ftG-ud-I6g" firstAttribute="leading" secondItem="2df-H8-0IN" secondAttribute="leadingMargin" id="rJa-Dl-25j"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webview" destination="ftG-ud-I6g" id="EKB-eX-vdT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBw-B9-VNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1767" y="-911"/>
         </scene>
     </scenes>
     <resources>
