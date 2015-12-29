@@ -17,6 +17,7 @@ class AllViewController: UITableViewController {
     var IDArray: Array<String> = []
     var Section:Int = 0
     var seletedId:String?
+    var data:[[String:String]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,8 @@ class AllViewController: UITableViewController {
             self.Section = 1
             self.tableView.reloadData()
         }
+        
+        allData.getAllArr()
         // Do any additional setup after loading the view, typically from a nib.
     }
     

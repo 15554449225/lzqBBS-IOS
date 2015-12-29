@@ -12,9 +12,11 @@ import SwiftyJSON
 class DetailViewController: UIViewController {
     
     @IBOutlet var webview: UIWebView!
+    
     var Id:String?
 
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         super.viewDidLoad()
         self.setData(Id!)
         // Do any additional setup after loading the view.

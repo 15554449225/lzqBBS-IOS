@@ -8,10 +8,11 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class forum {
     func getAll(callback:(result:AnyObject) -> Void){
-        let url:String = "http://discuss.flarum.org.cn/api/discussions?include=startUser,lastUser,startPost,tags&&page[offset]=20"
+        let url:String = Config().getApiDomain()+"/discussions?include=startUser,lastUser,startPost,tags&&page[offset]=20"
         Alamofire.request(.GET,url).responseJSON{ (response) in
             if let resp = response.result.value{
                 callback(result: resp)
@@ -20,10 +21,31 @@ class forum {
     }
     
     func getById(id:String,callback:(result:AnyObject) -> Void){
-        let url:String = "http://discuss.flarum.org.cn/api/discussions/\(id)"
+        let url:String = Config().getApiDomain()+"/discussions/\(id)"
         Alamofire.request(.GET,url).responseJSON{(response)in
             if let resp = response.result.value{
                callback(result: resp)
+            }
+        }
+    }
+    
+    func getAllArr(callback:(result:AnyObject)->Void){
+        var data:[[String:String]] = [["title":"nil","commentsCount":"nil","startTime":"nil","lastTime":"nil"]]
+        let url:String = Config().getApiDomain()+"/discussions?include=startUser,lastUser,startPost,tags&&page[offset]=20"
+        Alamofire.request(.GET,url).responseJSON{ (response) in
+            if let resp = response.result.value{
+                
+                let jsonStr = JSON(resp)
+                data.removeAll()
+                for(_,subJson):(String,JSON) in jsonStr["data"]{
+                    data.append([
+                        "title":subJson["attributes"]["title"].string!,
+                        "commentsCount":String(subJson["attributes"]["commentsCount"].int!),
+                        "startTime":subJson["attributes"]["startTime"].string!,
+                        "lastTime":subJson["attributes"]["lastTime"].string!
+                        ])
+                }
+                callback(result: data)
             }
         }
     }
