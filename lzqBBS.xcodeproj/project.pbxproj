@@ -40,7 +40,6 @@
 		90E9A23E1C281384002804E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90E9A2401C281384002804E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90F316571C321C210087E230 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		90F3165A1C3220240087E230 /* Test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Test.playground; sourceTree = "<group>"; };
 		90FF68511C2FAA940090B086 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9C5F513880197BB765DF86BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +124,6 @@
 				90FF68511C2FAA940090B086 /* DetailViewController.swift */,
 				90E569EB1C315CCF00BFA567 /* PostCell.swift */,
 				90E569EC1C315CCF00BFA567 /* PostCell.xib */,
-				90F3165A1C3220240087E230 /* Test.playground */,
 			);
 			name = View;
 			sourceTree = "<group>";

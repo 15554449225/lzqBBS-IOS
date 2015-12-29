@@ -106,20 +106,16 @@
             </objects>
             <point key="canvasLocation" x="1093" y="-159"/>
         </scene>
-        <!--全部-->
+        <!--讨论-->
         <scene sceneID="q0b-Bp-3gC">
             <objects>
                 <navigationController id="4yY-Es-qdl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="全部" image="essential_icon" selectedImage="essential_selected_icon" id="RiT-bW-M3m"/>
+                    <tabBarItem key="tabBarItem" title="讨论" image="essential_icon" selectedImage="essential_selected_icon" id="RiT-bW-M3m"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B92-3C-veH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.24313725490196078" green="0.33725490196078434" blue="0.7411442911896301" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Rma-aA-oDw">
-                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="9Mo-e2-Cjr" kind="relationship" relationship="rootViewController" id="OEz-YH-aGu"/>
                     </connections>
@@ -128,7 +124,7 @@
             </objects>
             <point key="canvasLocation" x="394" y="-911"/>
         </scene>
-        <!--全部-->
+        <!--讨论-->
         <scene sceneID="ZTO-da-7Wf">
             <objects>
                 <tableViewController id="9Mo-e2-Cjr" customClass="AllViewController" customModule="lzqBBS" customModuleProvider="target" sceneMemberID="viewController">
@@ -137,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PrototypeCells" id="zCL-Vd-1wI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PrototypeCells" id="zCL-Vd-1wI">
                                 <rect key="frame" x="0.0" y="92" width="600" height="47"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zCL-Vd-1wI" id="IET-Yy-8Pi">
@@ -151,7 +147,7 @@
                             <outlet property="delegate" destination="9Mo-e2-Cjr" id="11U-dr-s72"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="全部" id="W6r-qh-WVY"/>
+                    <navigationItem key="navigationItem" title="讨论" id="W6r-qh-WVY"/>
                     <connections>
                         <segue destination="734-5D-p6o" kind="show" identifier="showDetailSegue" id="rIq-6Q-9Nk"/>
                     </connections>

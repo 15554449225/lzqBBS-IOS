@@ -17,7 +17,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lNG-7C-lF0">
                         <rect key="frame" x="8" y="10" width="50" height="54"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回复" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AM0-mT-yVu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="讨论" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AM0-mT-yVu">
                                 <rect key="frame" x="8" y="27" width="34" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                                 <color key="textColor" red="0.51128128997352995" green="0.42980238970588291" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,10 +43,10 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xiaotain  3分钟前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Iq-gi-AHK">
-                        <rect key="frame" x="79" y="12" width="130" height="21"/>
+                        <rect key="frame" x="79" y="12" width="222" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="bYj-ga-Uru"/>
-                            <constraint firstAttribute="width" constant="130" id="lrt-e8-AWE"/>
+                            <constraint firstAttribute="width" constant="222" id="lrt-e8-AWE"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.37013221153846154" green="0.37013221153846154" blue="0.37013221153846154" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,11 +91,12 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="AnsView" destination="lNG-7C-lF0" id="UVz-aZ-V95"/>
                 <outlet property="AuthorTime" destination="9Iq-gi-AHK" id="jad-xe-E50"/>
                 <outlet property="Num" destination="4wJ-wE-XsR" id="X5l-kP-28p"/>
                 <outlet property="Title" destination="Yt7-Oy-M3T" id="8o4-ME-047"/>
             </connections>
-            <point key="canvasLocation" x="700.5" y="490"/>
+            <point key="canvasLocation" x="576.5" y="594"/>
         </tableViewCell>
     </objects>
 </document>

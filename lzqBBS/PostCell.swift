@@ -10,11 +10,12 @@ import UIKit
 
 class PostCell: UITableViewCell {
 
+    @IBOutlet var AnsView: UIView!
     @IBOutlet var Title: UILabel!
     @IBOutlet var Num: UILabel!
     @IBOutlet var AuthorTime: UILabel!
     override func awakeFromNib() {
-        super.awakeFromNib()
+        super.awakeFromNib() 
         // Initialization code
     }
 

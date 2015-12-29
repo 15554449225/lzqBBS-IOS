@@ -11,11 +11,8 @@ import SwiftyJSON
 
 class AllViewController: UITableViewController {
     
-//    var newArray = ["😄 Haha","🐱 猫咪","🐶 gougou","🎄 圣诞"];
-//    var data:AnyObject?
-    var newArray: Array<String> = []
-    var IDArray: Array<String> = []
-    var Section:Int = 0
+
+    var SectionNum:Int = 0
     var seletedId:String?
     var data:[[String:String]]?
     
@@ -31,19 +28,12 @@ class AllViewController: UITableViewController {
         let nib = UINib(nibName: "PostCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PostCellXib")
         
-        let allData = forum();
-        allData.getAll{result in
-            let jsonStr = JSON(result)["data"]
-            for (_,subJson):(String, JSON) in jsonStr {
-                self.IDArray.append(subJson["id"].string!)
-                self.newArray.append(subJson["attributes"]["title"].string!)
-            }
-            self.Section = 1
+        let allData = forum()
+        allData.getAllArr{result in
+            self.SectionNum = 1
+            self.data = result as? [[String : String]]
             self.tableView.reloadData()
         }
-        
-        allData.getAllArr()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -52,30 +42,27 @@ class AllViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.Section
+        return self.SectionNum
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCellXib", forIndexPath: indexPath) as! PostCell;
-        let text = newArray[indexPath.row]
-        let id = IDArray[indexPath.row]
-        cell.Title.text = text
-        cell.Num.text = id
-        
+        cell.Title.text = self.data![indexPath.row]["title"]
+        cell.AuthorTime.text = self.data![indexPath.row]["startTime"]
+        cell.Num.text = self.data![indexPath.row]["commentsCount"]
         return cell;
     }
 
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newArray.count
+        return self.data!.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        self.seletedId = IDArray[indexPath.row]
+        self.seletedId = self.data![indexPath.row]["id"]
         performSegueWithIdentifier("showDetailSegue", sender: nil)
     }
     
