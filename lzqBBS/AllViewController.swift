@@ -22,22 +22,25 @@ class AllViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.greenColor()   
         self.view.backgroundColor = UIColor(red: 235, green: 237, blue: 240, alpha: 0.9)
 //        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.tableFooterView = UIView()
         self.tableView.estimatedRowHeight = 120;
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         let nib = UINib(nibName: "PostCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PostCellXib")
         
-        let allData = forum()
-        allData.getAllArr{result in
-            self.SectionNum = 1
-            self.data = result as? [[String : String]]
-            self.tableView.reloadData()
-        }
-        
-//        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: reloadData)
+
+    
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: refreshHeader)
-        
+        self.tableView.mj_header.beginRefreshing()
+        refreshHeader()
+//        let allData = forum()
+//        allData.getAllArr{result in
+//            self.SectionNum = 1
+//            self.data = result as? [[String : String]]
+//            self.tableView.mj_header.endRefreshing()
+//            self.tableView.reloadData()
+//        }
     }
     
 
@@ -84,7 +87,6 @@ class AllViewController: UITableViewController {
         allData.getAllArr{result in
             self.SectionNum = 1
             self.data = result as? [[String : String]]
-            print("excute")
             self.tableView.reloadData()
             self.tableView.mj_header.endRefreshing()
         }
