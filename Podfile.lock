@@ -1,12 +1,10 @@
 PODS:
   - Alamofire (3.1.4)
-  - MJRefresh (3.0.7)
   - PageController (0.3.1)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
-  - MJRefresh
   - PageController
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -21,7 +19,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
-  MJRefresh: f3e1228ec3d38c7ba5208d58032631a52f39f495
   PageController: 21843ffce26e77e5d141ed0639da8a11cfbcac5b
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 

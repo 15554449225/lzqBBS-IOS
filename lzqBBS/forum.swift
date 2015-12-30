@@ -22,7 +22,7 @@ class forum {
     
     func getAllArr(callback:(result:AnyObject)->Void){
         var data:[[String:String]] = [["id":"nil","title":"nil","commentsCount":"nil","startTime":"nil","lastTime":"nil"]]
-        let url:String = Config().getApiDomain()+"/discussions?include=startUser,lastUser,startPost,tags&&page[offset]=20"
+        let url:String = Config().getApiDomain()+"/discussions?include=startUser,lastUser,startPost,tags&&page[offset]=0&sort=-lastTime"
         Alamofire.request(.GET,url).responseJSON{ (response) in
             if let resp = response.result.value{
                 

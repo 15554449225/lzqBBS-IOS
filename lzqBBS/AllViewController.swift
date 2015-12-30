@@ -34,7 +34,13 @@ class AllViewController: UITableViewController {
             self.data = result as? [[String : String]]
             self.tableView.reloadData()
         }
+        
+//        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: reloadData)
+        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: refreshHeader)
+        
     }
+    
+
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
@@ -71,6 +77,18 @@ class AllViewController: UITableViewController {
             let viewController = segue.destinationViewController as! DetailViewController
             viewController.Id = seletedId
         }
+    }
+    
+    func refreshHeader(){
+        let allData = forum()
+        allData.getAllArr{result in
+            self.SectionNum = 1
+            self.data = result as? [[String : String]]
+            print("excute")
+            self.tableView.reloadData()
+            self.tableView.mj_header.endRefreshing()
+        }
+        
     }
     
 
