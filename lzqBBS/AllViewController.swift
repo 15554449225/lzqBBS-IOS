@@ -15,6 +15,7 @@ class AllViewController: UITableViewController {
     var SectionNum:Int = 0
     var seletedId:String?
     var data:[[String:String]]?
+    var page:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +31,15 @@ class AllViewController: UITableViewController {
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PostCellXib")
         
 
-    
+        
+        //上拉刷新
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: refreshHeader)
+        self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: nextPage)
+        
+        
         self.tableView.mj_header.beginRefreshing()
         refreshHeader()
-//        let allData = forum()
-//        allData.getAllArr{result in
-//            self.SectionNum = 1
-//            self.data = result as? [[String : String]]
-//            self.tableView.mj_header.endRefreshing()
-//            self.tableView.reloadData()
-//        }
+        
     }
     
 
@@ -84,13 +83,32 @@ class AllViewController: UITableViewController {
     
     func refreshHeader(){
         let allData = forum()
-        allData.getAllArr{result in
+        allData.getAllArr(0, callback: {(result) in
             self.SectionNum = 1
-            self.data = result as? [[String : String]]
-            self.tableView.reloadData()
+            self.data = result
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
             self.tableView.mj_header.endRefreshing()
-        }
-        
+        })
+    }
+    
+    func nextPage(){
+        self.page += 1
+        self.tableView.mj_footer.endRefreshing()
+        let allData = forum()
+        allData.getAllArr(self.page, callback: {(result) in
+            self.SectionNum = 1
+            for(var i = 0 ; i<20 ; i++){
+                self.data?.append(result[i])
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
+            
+//            self.tableView.reloadData()
+            self.tableView.mj_footer.endRefreshing()
+        })
     }
     
 

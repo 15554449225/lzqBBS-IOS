@@ -8,8 +8,8 @@
 
 import Foundation
 class Config {
-    private var apiDomain:String = "http://bbs.lzqstd.net/api"
-//    private var apiDomain:String = "http://discuss.flarum.org.cn/api"
+//    private var apiDomain:String = "http://bbs.lzqstd.net/api"
+    private var apiDomain:String = "http://discuss.flarum.org.cn/api"
     func getApiDomain()->String{
         return self.apiDomain
     }
