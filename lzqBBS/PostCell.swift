@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class PostCell: UITableViewCell {
 
     @IBOutlet var AnsView: UIView!

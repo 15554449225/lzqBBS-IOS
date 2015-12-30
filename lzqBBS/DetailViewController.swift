@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 
+ /// 跳转过来的内容详细页
+
 class DetailViewController: UIViewController {
     
     @IBOutlet var webview: UIWebView!

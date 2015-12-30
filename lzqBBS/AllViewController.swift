@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 
+/// 第一个界面 全部讨论
+
 class AllViewController: UITableViewController {
     
 
@@ -20,30 +22,32 @@ class AllViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.tintColor = UIColor.greenColor()   
+        //设置view 背景
         self.view.backgroundColor = UIColor(red: 235, green: 237, blue: 240, alpha: 0.9)
-//        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        self.tableView.tableFooterView = UIView()
-        self.tableView.estimatedRowHeight = 120;
-        self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        //去掉每个cell的分割线
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        //去掉没有内容cell分割线  多余的分割线
+        self.tableView.tableFooterView = UIView()
+        
+        //加载nib cell元素
         let nib = UINib(nibName: "PostCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PostCellXib")
         
-
-        
-        //上拉刷新
+        //上拉刷新&&下拉加载
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: refreshHeader)
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: nextPage)
         
-        
+        //开始刷新数据
         self.tableView.mj_header.beginRefreshing()
+        //加载数据
         refreshHeader()
         
     }
     
 
-    
+    //返回每一行的高度
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
@@ -52,10 +56,12 @@ class AllViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //返回section数量
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.SectionNum
     }
     
+    //cell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PostCellXib", forIndexPath: indexPath) as! PostCell;
         cell.Title.text = self.data![indexPath.row]["title"]
@@ -64,16 +70,19 @@ class AllViewController: UITableViewController {
         return cell;
     }
 
-    
+    //返回cell数量
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.data!.count
     }
     
+    //点击事件
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         self.seletedId = self.data![indexPath.row]["id"]
+        //跳转
         performSegueWithIdentifier("showDetailSegue", sender: nil)
     }
     
+    //跳转函数，上方调用的
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetailSegue" {
             let viewController = segue.destinationViewController as! DetailViewController
@@ -81,12 +90,14 @@ class AllViewController: UITableViewController {
         }
     }
     
+    //刷新数据的函数
     func refreshHeader(){
         let allData = forum()
         allData.getAllArr(0, callback: {(result) in
             self.SectionNum = 1
             self.data = result
             dispatch_async(dispatch_get_main_queue()) {
+                //获取数据后，重新加载tableview 的data
                 self.tableView.reloadData()
             }
             self.tableView.mj_header.endRefreshing()
