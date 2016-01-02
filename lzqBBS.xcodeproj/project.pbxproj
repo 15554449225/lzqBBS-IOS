@@ -89,7 +89,6 @@
 		90D70E821C33CE3F002B90B8 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		90D70E831C33CE3F002B90B8 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		90D70E841C33CE3F002B90B8 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		90E4C6481C380BC30005DCCC /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		90E9A2311C281384002804E5 /* lzqBBS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lzqBBS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9A2341C281384002804E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9A2391C281384002804E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -236,7 +235,6 @@
 		90E9A2281C281384002804E5 = {
 			isa = PBXGroup;
 			children = (
-				90E4C6481C380BC30005DCCC /* MyPlayground.playground */,
 				90E9A2331C281384002804E5 /* lzqBBS */,
 				90E9A2321C281384002804E5 /* Products */,
 				3C02054EA275D37F608AAB96 /* Pods */,

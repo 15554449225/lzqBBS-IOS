@@ -37,5 +37,11 @@ class DetailViewController: UIViewController {
             self.webview.loadHTMLString(HTMLStr!,baseURL:nil)
 //            self.webview.loadRequest(NSURLRequest(URL: NSURL(string: "http://bbs.lzqstd.net/d/\(id)")!))
         })
+        
+        data.getDetailById(id, callback: {(result) in
+            if result == true{
+                print(data.postInfo)
+            }
+        })
     }
 }
