@@ -53,9 +53,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是标题这是标题这是标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yt7-Oy-M3T">
-                        <rect key="frame" x="79" y="41" width="295" height="21"/>
+                        <rect key="frame" x="79" y="41" width="384" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="295" id="8wD-Nj-3wl"/>
+                            <constraint firstAttribute="width" constant="384" id="8wD-Nj-3wl"/>
                             <constraint firstAttribute="width" constant="240" id="ZBj-Wv-xOB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -74,6 +74,7 @@
                     <constraint firstAttribute="bottomMargin" secondItem="Yt7-Oy-M3T" secondAttribute="bottom" constant="3.5" id="Fsd-mD-mPe"/>
                     <constraint firstItem="Yt7-Oy-M3T" firstAttribute="leading" secondItem="lNG-7C-lF0" secondAttribute="trailing" constant="21" id="Kuq-FU-dq7"/>
                     <constraint firstItem="9Iq-gi-AHK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="79" id="R79-8l-DV3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Yt7-Oy-M3T" secondAttribute="bottom" constant="3.5" id="Twb-ad-Zvx"/>
                     <constraint firstItem="lNG-7C-lF0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="WUP-5G-O7v"/>
                     <constraint firstAttribute="trailing" secondItem="lNG-7C-lF0" secondAttribute="trailing" constant="413" id="WxB-VB-JxW"/>
                     <constraint firstItem="lNG-7C-lF0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="Xi8-pE-0Fz"/>

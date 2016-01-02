@@ -31,6 +31,11 @@ class AllViewController: UITableViewController {
         //去掉没有内容cell分割线  多余的分割线
         self.tableView.tableFooterView = UIView()
         
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 80;
+        
+        
         //加载nib cell元素
         let nib = UINib(nibName: "PostCell", bundle: nil)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "PostCellXib")
@@ -49,6 +54,7 @@ class AllViewController: UITableViewController {
 
     //返回每一行的高度
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
         return 80
     }
     
