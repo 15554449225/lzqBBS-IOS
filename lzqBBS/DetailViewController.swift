@@ -36,7 +36,6 @@ class DetailViewController: UIViewController {
             let HTMLStr = JsonStr["included"][0]["attributes"]["contentHtml"].string
             self.webview.loadHTMLString(HTMLStr!,baseURL:nil)
 //            self.webview.loadRequest(NSURLRequest(URL: NSURL(string: "http://bbs.lzqstd.net/d/\(id)")!))
-            
         })
     }
 }

@@ -33,12 +33,12 @@ class AllViewController: UITableViewController {
         
         
         self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 80;
+        self.tableView.estimatedRowHeight = 90;
         
         
         //加载nib cell元素
-        let nib = UINib(nibName: "PostCell", bundle: nil)
-        self.tableView.registerNib(nib, forCellReuseIdentifier: "PostCellXib")
+//        let nib = UINib(nibName: "PostCell", bundle: nil)
+//        self.tableView.registerNib(nib, forCellReuseIdentifier: "PostCellXib")
         
         //上拉刷新&&下拉加载
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: refreshHeader)
@@ -54,7 +54,6 @@ class AllViewController: UITableViewController {
 
     //返回每一行的高度
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
         return 80
     }
     
@@ -69,9 +68,9 @@ class AllViewController: UITableViewController {
     
     //cell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PostCellXib", forIndexPath: indexPath) as! PostCell;
+        let cell = tableView.dequeueReusableCellWithIdentifier("PrototypeCells", forIndexPath: indexPath) as! PostCell;
         cell.Title.text = self.data![indexPath.row]["title"]
-        cell.AuthorTime.text = self.data![indexPath.row]["startTime"]
+        cell.Time.text = self.data![indexPath.row]["startTime"]
         cell.Num.text = self.data![indexPath.row]["commentsCount"]
         return cell;
     }
