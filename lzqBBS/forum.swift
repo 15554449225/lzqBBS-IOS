@@ -13,7 +13,7 @@ import SwiftyJSON
 class forum {
     
     var postInfo:Dictionary<String,String>?
-    var commentsInfo:[[String:String]]?
+    var commentsInfo:[[String:String]] = [["username":"nil"]]
     
     func getById(id:String,callback:(result:AnyObject) -> Void){
         let url:String = Config().getApiDomain()+"/discussions/\(id)"
@@ -24,9 +24,9 @@ class forum {
         }
     }
     
-    func findUser(jsonStr:JSON) -> String{
+    internal func findUserById(id:Int,jsonStr:JSON) ->String{
         var res:String = "nil"
-        let userId = jsonStr["included"][0]["relationships"]["user"]["data"]["id"].string!
+        let userId = jsonStr["included"][id]["relationships"]["user"]["data"]["id"].string!
         for(_,subJson):(String,JSON) in jsonStr["included"]{
             if(subJson["type"].string == "users" && subJson["id"].string == userId){
                 res = subJson["attributes"]["username"].string!
@@ -35,9 +35,9 @@ class forum {
         return res
     }
     
-    func findAvator(jsonStr:JSON) ->String{
+    internal func findAvatorById(id:Int,jsonStr:JSON) ->String{
         var res:String = "nil"
-        let userId = jsonStr["included"][0]["relationships"]["user"]["data"]["id"].string!
+        let userId = jsonStr["included"][id]["relationships"]["user"]["data"]["id"].string!
         for(_,subJson):(String,JSON) in jsonStr["included"]{
             if(subJson["type"].string == "users" && subJson["id"].string == userId){
                 if(subJson["attributes"]["avatarUrl"] == nil){
@@ -60,9 +60,20 @@ class forum {
                     "commentsCount":String(jsonStr["attributes"]["commentsCount"].int!),
                     "startTime":jsonStr["attributes"]["startTime"].string!,
                     "lastTime":jsonStr["attributes"]["lastTime"].string!,
-                    "userName":self.findUser(JSON(resp)),
-                    "avatar":self.findAvator(JSON(resp))
+                    "userName":self.findUserById(0,jsonStr:JSON(resp)),
+                    "avatar":self.findAvatorById(0,jsonStr:JSON(resp))
                 ]
+                self.commentsInfo.removeAll()
+                for(index,subJson):(String,JSON) in JSON(resp)["included"]{
+                    if(subJson["type"] == "posts" && subJson["attributes"]["contentType"] == "comment"){
+                        self.commentsInfo.append([
+                            "username":self.findUserById(Int(index)!, jsonStr: JSON(resp)),
+                            "avator":self.findAvatorById(Int(index)!, jsonStr: JSON(resp)),
+                            "time":subJson["attributes"]["time"].string!
+//                            "contentHtml":subJson["attributes"]["contentHtml"].string!
+                        ])
+                    }
+                }
                 callback(result: true)
             }
         }

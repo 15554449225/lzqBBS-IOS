@@ -40,7 +40,8 @@ class DetailViewController: UIViewController {
         
         data.getDetailById(id, callback: {(result) in
             if result == true{
-                print(data.postInfo)
+//                print(data.postInfo)
+                print(data.commentsInfo)
             }
         })
     }
