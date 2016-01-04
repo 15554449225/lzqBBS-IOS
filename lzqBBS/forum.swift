@@ -50,6 +50,31 @@ class forum {
         return res
     }
     
+    internal func findTag(jsonStr:JSON) -> String{
+        var res:[String] = [""]
+        var tagId:[String] = [""]
+        var resStr:String = ""
+        let tem = jsonStr["data"]["relationships"]["tags"]["data"]
+        tagId.removeAll()
+        res.removeAll()
+        for(_,subJson):(String,JSON) in tem{
+            tagId.append(subJson["id"].string!)
+        }
+        for(_,subJson):(String,JSON) in jsonStr["included"]{
+            if(subJson["type"] == "tags"){
+                for item in tagId{
+                    if(subJson["id"].string! == item){
+                        res.append(subJson["attributes"]["name"].string!)
+                    }
+                }
+            }
+        }
+        for item in res{
+            resStr += ","+item
+        }
+        return resStr.substringFromIndex(resStr.startIndex.advancedBy(1))
+    }
+    
     func getDetailById(id:String,callback:(result:Bool) -> Void){
         let url:String = Config().getApiDomain()+"/discussions/\(id)"
         Alamofire.request(.GET,url).responseJSON{(response)in
@@ -57,6 +82,7 @@ class forum {
                 let jsonStr = JSON(resp)["data"]
                 self.postInfo = [
                     "title":jsonStr["attributes"]["title"].string!,
+                    "tag":self.findTag(JSON(resp)),
                     "commentsCount":String(jsonStr["attributes"]["commentsCount"].int!),
                     "startTime":jsonStr["attributes"]["startTime"].string!,
                     "lastTime":jsonStr["attributes"]["lastTime"].string!,
@@ -69,8 +95,8 @@ class forum {
                         self.commentsInfo.append([
                             "username":self.findUserById(Int(index)!, jsonStr: JSON(resp)),
                             "avator":self.findAvatorById(Int(index)!, jsonStr: JSON(resp)),
-                            "time":subJson["attributes"]["time"].string!
-//                            "contentHtml":subJson["attributes"]["contentHtml"].string!
+                            "time":subJson["attributes"]["time"].string!,
+                            "contentHtml":subJson["attributes"]["contentHtml"].string!
                         ])
                     }
                 }
