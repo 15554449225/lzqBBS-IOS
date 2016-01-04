@@ -276,7 +276,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kUd-eT-9zH">
-                                                    <rect key="frame" x="8" y="58.5" width="584" height="128"/>
+                                                    <rect key="frame" x="8" y="58" width="584" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="128" id="YdR-TF-RVZ"/>
@@ -289,7 +289,7 @@
                                                     <rect key="frame" x="0.0" y="8" width="600" height="42.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWp-7c-uvD">
-                                                            <rect key="frame" x="58" y="2" width="33" height="21"/>
+                                                            <rect key="frame" x="58" y="2" width="100" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -355,7 +355,7 @@
                         <outlet property="postNum" destination="3Yw-H1-qHM" id="5MR-MB-fKQ"/>
                         <outlet property="postTags" destination="1mH-Ps-oqW" id="YN4-Ed-Tnc"/>
                         <outlet property="postTitle" destination="3UH-Ld-uHA" id="oOS-Kh-ylZ"/>
-                        <outlet property="tableView" destination="JT6-g1-TCs" id="Lhk-mU-5nD"/>
+                        <outlet property="tableView" destination="JT6-g1-TCs" id="BDh-Ti-qjj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBw-B9-VNT" userLabel="First Responder" sceneMemberID="firstResponder"/>

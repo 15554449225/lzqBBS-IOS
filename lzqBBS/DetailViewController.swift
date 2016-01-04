@@ -11,13 +11,14 @@ import SwiftyJSON
 
  /// 跳转过来的内容详细页
 
-class DetailViewController: UITableViewController {
+class DetailViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     var Id:String?
     var data:[[String:String]]?
     var section = 0
 
 
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var postTitle: UILabel!
     @IBOutlet var postTags: UILabel!
     @IBOutlet var postNum: UILabel!
@@ -26,8 +27,7 @@ class DetailViewController: UITableViewController {
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        self.tableView = UITableView.re
-        
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.tableFooterView = UIView()
         
         let myForum = forum()
@@ -50,18 +50,18 @@ class DetailViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return self.section
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return (data?.count)!
     }
     
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DetailCell", forIndexPath: indexPath) as! DetailCell
     
         cell.username.text = data![indexPath.row]["username"]
