@@ -11,12 +11,14 @@ import SwiftyJSON
 
  /// 跳转过来的内容详细页
 
+
+
 class DetailViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     var Id:String?
     var data:[[String:String]]?
     var section = 0
-
+    var referenceCell: DetailCell?
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var postTitle: UILabel!
@@ -29,6 +31,8 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.tableFooterView = UIView()
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 90;
         
         let myForum = forum()
         myForum.getDetailById(Id!, callback: {(result) in
@@ -63,17 +67,21 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DetailCell", forIndexPath: indexPath) as! DetailCell
-    
-        cell.username.text = data![indexPath.row]["username"]
-        cell.time.text = data![indexPath.row]["time"]
-        cell.content.text = data![indexPath.row]["contentHtml"]
-        if(data![indexPath.row]["avator"] != "nil"){
-            let avatorUrl = NSURL(string:data![indexPath.row]["avator"]!)
-            let image = UIImage(data: NSData(contentsOfURL: avatorUrl!)!)
-            cell.avator.image = image
-        }
-        
+        cell.updateCell(data![indexPath.row])
         return cell
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if(self.referenceCell == nil){
+            self.referenceCell = tableView.dequeueReusableCellWithIdentifier("DetailCell") as? DetailCell
+        }
+        self.referenceCell!.updateCell(data![indexPath.row])
+        
+        let height = max(CGRectGetMaxY((self.referenceCell?.content.frame)!), CGRectGetMaxY((self.referenceCell?.avator.frame)!)) + 8
+        
+        print(CGRectGetMaxY((self.referenceCell?.content.frame)!))
+        
+        return height
+        
     }
     
     /*

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class DetailCell: UITableViewCell {
 
@@ -15,6 +16,8 @@ class DetailCell: UITableViewCell {
     @IBOutlet var username: UILabel!
     @IBOutlet var avator: UIImageView!
     override func awakeFromNib() {
+        self.content.scrollEnabled = false
+        self.content.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         self.avator.layer.cornerRadius = 15
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +27,18 @@ class DetailCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func updateCell(jsonStr:[String:String]){
+        self.username.text = jsonStr["username"]
+        self.time.text = jsonStr["time"]
+        self.content.attributedText = jsonStr["contentHtml"]?.html2AttributedString
+        
+        if(jsonStr["avator"] != "nil"){
+            let avatorUrl = NSURL(string: jsonStr["avator"]!)
+            let img = UIImage(data: NSData(contentsOfURL: avatorUrl!)!)
+            self.avator.image = img
+        }
+        
     }
 
 }
