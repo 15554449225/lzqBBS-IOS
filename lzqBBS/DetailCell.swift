@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Kingfisher
 
 class DetailCell: UITableViewCell {
 
@@ -35,8 +36,7 @@ class DetailCell: UITableViewCell {
         
         if(jsonStr["avator"] != "nil"){
             let avatorUrl = NSURL(string: jsonStr["avator"]!)
-            let img = UIImage(data: NSData(contentsOfURL: avatorUrl!)!)
-            self.avator.image = img
+            self.avator.kf_setImageWithURL(avatorUrl!)
         }
         
     }

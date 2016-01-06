@@ -46,6 +46,7 @@
 		60F53FC21A0C367DE616972F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D84A8F520948B3932B06AE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9001D6711C3A52DE00DAACE5 /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
+		901B4D1C1C3CE3D90066BDE1 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "Pods/../build/Debug-iphoneos/Kingfisher.framework"; sourceTree = "<group>"; };
 		901F76FE1C2834C100F8B205 /* CateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CateViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		901F77001C284D5600F8B205 /* SubCateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCateViewController.swift; sourceTree = "<group>"; };
 		905B09751C3A9CBD0060E4C6 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		29BCA774A4952B334CF36ED2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				901B4D1C1C3CE3D90066BDE1 /* Kingfisher.framework */,
 				60F53FC21A0C367DE616972F /* Pods.framework */,
 			);
 			name = Frameworks;

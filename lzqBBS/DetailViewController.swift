@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 
+
  /// 跳转过来的内容详细页
 
 
@@ -27,7 +28,7 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     @IBOutlet var postNum: UILabel!
     
     override func viewDidLoad() {
-        
+        self.showLoadingView()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -69,7 +70,10 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("DetailCell", forIndexPath: indexPath) as! DetailCell
-        cell.updateCell(data![indexPath.row])
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            cell.updateCell(self.data![indexPath.row])
+        }
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -93,5 +97,15 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     
     func saveCellHeight(index:Int,height:CGFloat){
         self.cellHeight[index] = height
+    }
+    
+    func showLoadingView(){
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.labelText = "这是默认带菊花的提示"
+        //背景渐变效果
+        hud.dimBackground = true
+        
+        //延迟隐藏
+        hud.hide(true, afterDelay: 0.8)
     }
 }

@@ -49,6 +49,9 @@ class AllViewController: UITableViewController {
         //加载数据
         refreshHeader()
         
+        //push后隐藏tabbar
+//        self.hidesBottomBarWhenPushed = true
+        
     }
     
 
@@ -91,6 +94,7 @@ class AllViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetailSegue" {
             let viewController = segue.destinationViewController as! DetailViewController
+            segue.destinationViewController.hidesBottomBarWhenPushed = true
             viewController.Id = seletedId
         }
     }
@@ -118,11 +122,9 @@ class AllViewController: UITableViewController {
             for(var i = 0 ; i<20 ; i++){
                 self.data?.append(result[i])
             }
-            dispatch_async(dispatch_get_main_queue()) {
+//            dispatch_async(dispatch_get_main_queue()) {
                 self.tableView.reloadData()
-            }
-            
-//            self.tableView.reloadData()
+//            }
             self.tableView.mj_footer.endRefreshing()
         })
     }
