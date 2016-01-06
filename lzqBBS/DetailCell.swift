@@ -30,10 +30,8 @@ class DetailCell: UITableViewCell {
     func updateCell(jsonStr:[String:String]){
         self.username.text = jsonStr["username"]
         self.time.text = jsonStr["time"]
-        
-        
+    
         self.content.attributedText = jsonStr["contentHtml"]?.html2AttributedString
-        self.content.backgroundColor = UIColor.redColor()
         
         if(jsonStr["avator"] != "nil"){
             let avatorUrl = NSURL(string: jsonStr["avator"]!)

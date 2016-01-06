@@ -19,6 +19,7 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     var data:[[String:String]]?
     var section = 0
     var referenceCell: DetailCell?
+    var cellHeight:Dictionary<Int,CGFloat> = [1:1]
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var postTitle: UILabel!
@@ -43,6 +44,7 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
                 
                 self.section = 1
                 self.data = myForum.commentsInfo
+                self.cellHeight.removeAll()
                 self.tableView.reloadData()
             }
         })
@@ -74,97 +76,22 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
         if(self.referenceCell == nil){
             self.referenceCell = tableView.dequeueReusableCellWithIdentifier("DetailCell") as? DetailCell
         }
-        self.referenceCell!.updateCell(data![indexPath.row])
         
-        self.referenceCell?.setNeedsUpdateConstraints()
-        self.referenceCell?.updateFocusIfNeeded()
-        self.referenceCell?.setNeedsLayout()
-        self.referenceCell?.layoutIfNeeded()
-//        let height = max(CGRectGetMaxY((self.referenceCell?.content.frame)!), CGRectGetMaxY((self.referenceCell?.avator.frame)!)) + 8
-        let size = self.referenceCell?.content.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        return (size?.height)!
-        //        return self.referenceCell?.content.UILayoutFittingCompressedSize
-        
-        
-//        
-//        return (self.referenceCell?.content.frame.height)! + (self.referenceCell?.avator.frame.height)!
-        
+        if(self.cellHeight.count != self.data?.count){
+            self.referenceCell!.updateCell(data![indexPath.row])
+            self.referenceCell?.setNeedsUpdateConstraints()
+            self.referenceCell?.updateFocusIfNeeded()
+            self.referenceCell?.setNeedsLayout()
+            self.referenceCell?.layoutIfNeeded()
+            let size = self.referenceCell?.content.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+            self.saveCellHeight(indexPath.row, height: (size?.height)!+50)
+            return ((size?.height)! + 50)
+        }else{
+            return self.cellHeight[indexPath.row]!
+        }
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
+    func saveCellHeight(index:Int,height:CGFloat){
+        self.cellHeight[index] = height
     }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
-//    func setData(id:String){
-//        let data = forum()
-//        data.getById(id, callback: {(result) in
-//            let JsonStr = JSON(result)
-//            let HTMLStr = JsonStr["included"][0]["attributes"]["contentHtml"].string
-//            
-////            self.webview.loadHTMLString(HTMLStr!,baseURL:nil)
-////            self.webview.loadRequest(NSURLRequest(URL: NSURL(string: "http://bbs.lzqstd.net/d/\(id)")!))
-//        })
-//        
-//        data.getDetailById(id, callback: {(result) in
-//            if result == true{
-//                self.postTitle.numberOfLines = 0
-//                self.postTitle.text = data.postInfo!["title"]
-//                self.postTag.text = data.postInfo!["tag"]
-//                self.postNum.text = data.postInfo!["commentsCount"]
-//                self.authorName.text = data.postInfo!["userName"]
-//                self.authorPostTime.text = data.postInfo!["startTime"]
-//                
-//                if(data.postInfo!["avatar"] != "nil"){
-//                    let avatorUrl = NSURL(string:data.postInfo!["avatar"]!)
-//                    let data = NSData(contentsOfURL: avatorUrl!)
-//                    let image = UIImage(data: data!)
-//                    self.authorAvator.image = image
-//                    self.authorAvator.layer.cornerRadius = 15
-//                }
-//                
-//                
-//            }
-//        })
-//    }
 }
