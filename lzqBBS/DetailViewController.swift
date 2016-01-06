@@ -28,7 +28,7 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     @IBOutlet var postNum: UILabel!
     
     override func viewDidLoad() {
-        self.showLoadingView()
+//        self.showLoadingView()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -99,13 +99,13 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
         self.cellHeight[index] = height
     }
     
-    func showLoadingView(){
-        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "这是默认带菊花的提示"
-        //背景渐变效果
-        hud.dimBackground = true
-        
-        //延迟隐藏
-        hud.hide(true, afterDelay: 0.8)
-    }
+//    func showLoadingView(){
+//        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//        hud.labelText = "这是默认带菊花的提示"
+//        //背景渐变效果
+//        hud.dimBackground = true
+//        
+//        //延迟隐藏
+//        hud.hide(true, afterDelay: 0.8)
+//    }
 }
