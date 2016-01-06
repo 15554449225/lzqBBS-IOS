@@ -47,6 +47,7 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
                 self.data = myForum.commentsInfo
                 self.cellHeight.removeAll()
                 self.tableView.reloadData()
+                self.hideLoadinView()
             }
         })
         super.viewDidLoad()
@@ -101,11 +102,14 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     
     func showLoadingView(){
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.labelText = "这是默认带菊花的提示"
+//        hud.labelText = ""
         //背景渐变效果
-        hud.dimBackground = true
+        hud.backgroundColor = UIColor.whiteColor()
         
         //延迟隐藏
-        hud.hide(true, afterDelay: 3)
+//        hud.hide(true, afterDelay: 3)
+    }
+    func hideLoadinView(){
+        MBProgressHUD.hideHUDForView(self.view, animated: true)
     }
 }
