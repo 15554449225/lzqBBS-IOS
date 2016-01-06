@@ -11,13 +11,12 @@ import SwiftyJSON
 
 class DetailCell: UITableViewCell {
 
-    @IBOutlet var content: UITextView!
+    @IBOutlet var content: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var username: UILabel!
     @IBOutlet var avator: UIImageView!
     override func awakeFromNib() {
-        self.content.scrollEnabled = false
-        self.content.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+        self.content.numberOfLines = 0
         self.avator.layer.cornerRadius = 15
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +30,10 @@ class DetailCell: UITableViewCell {
     func updateCell(jsonStr:[String:String]){
         self.username.text = jsonStr["username"]
         self.time.text = jsonStr["time"]
+        
+        
         self.content.attributedText = jsonStr["contentHtml"]?.html2AttributedString
+        self.content.backgroundColor = UIColor.redColor()
         
         if(jsonStr["avator"] != "nil"){
             let avatorUrl = NSURL(string: jsonStr["avator"]!)

@@ -76,11 +76,18 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
         }
         self.referenceCell!.updateCell(data![indexPath.row])
         
-        let height = max(CGRectGetMaxY((self.referenceCell?.content.frame)!), CGRectGetMaxY((self.referenceCell?.avator.frame)!)) + 8
+        self.referenceCell?.setNeedsUpdateConstraints()
+        self.referenceCell?.updateFocusIfNeeded()
+        self.referenceCell?.setNeedsLayout()
+        self.referenceCell?.layoutIfNeeded()
+//        let height = max(CGRectGetMaxY((self.referenceCell?.content.frame)!), CGRectGetMaxY((self.referenceCell?.avator.frame)!)) + 8
+        let size = self.referenceCell?.content.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        return (size?.height)!
+        //        return self.referenceCell?.content.UILayoutFittingCompressedSize
         
-        print(CGRectGetMaxY((self.referenceCell?.content.frame)!))
         
-        return height
+//        
+//        return (self.referenceCell?.content.frame.height)! + (self.referenceCell?.avator.frame.height)!
         
     }
     
