@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class Config {
 //    private var apiDomain:String = "http://bbs.lzqstd.net/api"
     private var apiDomain:String = "http://discuss.flarum.org.cn/api"
@@ -21,6 +22,7 @@ extension String {
             else { return nil }
         do {
             return try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil)
+            
         } catch let error as NSError {
             print(error.localizedDescription)
             return  nil

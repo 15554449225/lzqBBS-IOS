@@ -28,7 +28,7 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     @IBOutlet var postNum: UILabel!
     
     override func viewDidLoad() {
-//        self.showLoadingView()
+        self.showLoadingView()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -106,6 +106,6 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
         hud.dimBackground = true
         
         //延迟隐藏
-        hud.hide(true, afterDelay: 0.8)
+        hud.hide(true, afterDelay: 3)
     }
 }
