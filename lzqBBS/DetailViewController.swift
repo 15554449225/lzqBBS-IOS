@@ -12,8 +12,6 @@ import MBProgressHUD
 
  /// 跳转过来的内容详细页
 
-
-
 class DetailViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     var Id:String?
@@ -102,12 +100,7 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     
     func showLoadingView(){
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        hud.labelText = ""
-        //背景渐变效果
         hud.backgroundColor = UIColor.whiteColor()
-        
-        //延迟隐藏
-//        hud.hide(true, afterDelay: 3)
     }
     func hideLoadinView(){
         MBProgressHUD.hideHUDForView(self.view, animated: true)

@@ -24,7 +24,7 @@ class forum {
         }
     }
     
-    internal func findUserById(id:Int,jsonStr:JSON) ->String{
+    private func findUserById(id:Int,jsonStr:JSON) ->String{
         var res:String = "nil"
         let userId = jsonStr["included"][id]["relationships"]["user"]["data"]["id"].string!
         for(_,subJson):(String,JSON) in jsonStr["included"]{
@@ -35,7 +35,7 @@ class forum {
         return res
     }
     
-    internal func findAvatorById(id:Int,jsonStr:JSON) ->String{
+    private func findAvatorById(id:Int,jsonStr:JSON) ->String{
         var res:String = "nil"
         let userId = jsonStr["included"][id]["relationships"]["user"]["data"]["id"].string!
         for(_,subJson):(String,JSON) in jsonStr["included"]{
@@ -50,7 +50,7 @@ class forum {
         return res
     }
     
-    internal func findTag(jsonStr:JSON) -> String{
+    private func findTag(jsonStr:JSON) -> String{
         var res:[String] = [""]
         var tagId:[String] = [""]
         var resStr:String = ""

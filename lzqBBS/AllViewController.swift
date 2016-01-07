@@ -49,12 +49,25 @@ class AllViewController: UITableViewController {
         //加载数据
         refreshHeader()
         
-        //push后隐藏tabbar
-//        self.hidesBottomBarWhenPushed = true
-        
+        //设置bar字体颜色
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发表", style: .Plain, target: self, action: "postTopic")
     }
     
+    
 
+    func postTopic(){
+        let userData = NSUserDefaults.standardUserDefaults()
+        if(userData.objectForKey("identification") != nil){
+//            self.performSegueWithIdentifier("postSegue", sender: nil)
+            self.performSegueWithIdentifier("loginSegue", sender: nil)
+        }else{
+            self.performSegueWithIdentifier("loginSegue", sender: nil)
+            
+        }
+    }
+    
     //返回每一行的高度
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80

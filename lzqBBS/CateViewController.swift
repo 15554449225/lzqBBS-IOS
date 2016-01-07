@@ -38,9 +38,6 @@ class CateViewController:  PageController{
         menuBar.registerClass(CustomMenuCell.self)
         
         viewControllers = createViewControllers()
-        
-        let u = User()
-        u.saveUser(isLogin)
 
         // Do any additional setup after loading the view.
     }
