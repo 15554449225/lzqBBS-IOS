@@ -23,7 +23,6 @@ class LoginViewController: UIViewController {
             let user = User()
             user.loginWithValue(username!, password: password!, callback: {(result) in
                 if(result){
-                    print("登陆成功")
                     self.hideLoadinView()
                     self.navigationController?.popToRootViewControllerAnimated(true)
                 }else{
