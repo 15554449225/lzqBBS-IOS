@@ -60,8 +60,7 @@ class AllViewController: UITableViewController {
     func postTopic(){
         let userData = NSUserDefaults.standardUserDefaults()
         if(userData.objectForKey("identification") != nil){
-//            self.performSegueWithIdentifier("postSegue", sender: nil)
-            self.performSegueWithIdentifier("loginSegue", sender: nil)
+            self.performSegueWithIdentifier("postSegue", sender: nil)
         }else{
             self.performSegueWithIdentifier("loginSegue", sender: nil)
             
