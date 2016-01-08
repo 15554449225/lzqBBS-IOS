@@ -17,69 +17,86 @@ class PostViewController: UIViewController {
     
     @IBOutlet var genCat: UIButton!
     @IBAction func genCat(sender: AnyObject) {
+        self.tag1("1")
         self.disCatBtn()
     }
     
     @IBOutlet var lzqCat: UIButton!
     @IBAction func lzqCat(sender: AnyObject) {
+        self.tag1("22")
         self.disCatBtn()
     }
     
     @IBOutlet var appCat: UIButton!
     @IBAction func appCat(sender: AnyObject) {
+        self.tag1("19")
         self.disCatBtn()
     }
 
     
     @IBOutlet var wCat: UIButton!
     @IBAction func wCat(sender: AnyObject) {
+        self.tag1("20")
         self.disCatBtn()
     }
 
     @IBOutlet var fronCat: UIButton!
     @IBAction func fronCat(sender: AnyObject) {
+        self.tag1("3")
         self.disCatBtn()
     }
     
     @IBOutlet var backCat: UIButton!
     @IBAction func backCat(sender: AnyObject) {
+        self.tag1("12")
         self.disCatBtn()
     }
     
     @IBOutlet var sysCat: UIButton!
     @IBAction func sysCat(sender: AnyObject) {
+        self.tag1("13")
         self.disCatBtn()
     }
     
     @IBOutlet var jinLab: UIButton!
     @IBAction func jinLab(sender: AnyObject) {
+        self.tag2("10")
         self.disLabBtn()
     }
     
     @IBOutlet var testLab: UIButton!
     @IBAction func testLab(sender: AnyObject) {
+        self.tag2("11")
         self.disLabBtn()
     }
     
     @IBOutlet var needLab: UIButton!
     @IBAction func needLab(sender: AnyObject) {
+        self.tag2("18")
         self.disLabBtn()
     }
     
     @IBOutlet var helpab: UIButton!
     @IBAction func helpLab(sender: AnyObject) {
+        self.tag2("9")
         self.disLabBtn()
     }
     
     @IBOutlet var hasLab: UIButton!
     @IBAction func hasLab(sender: AnyObject) {
+        self.tag2("2")
         self.disLabBtn()
     }
     
     @IBAction func clearBtn(sender: AnyObject) {
         self.enableAllBtn()
     }
+    @IBAction func post(sender: AnyObject) {
+        forum().postTopic()
+    }
 
+    var tag1:String = ""
+    var tag2:String = ""
     
 
     override func viewDidLoad() {
@@ -88,10 +105,20 @@ class PostViewController: UIViewController {
         self.postContent.layer.borderWidth = 1
         self.postContent.layer.borderColor = UIColor(red: 193/255, green: 193/255, blue: 192/255, alpha: 0.9).CGColor
         self.postContent.layer.cornerRadius = 6
+        User().updateUserToken{(result) in
+            print(result)
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func tag1(tagId:String){
+        self.tag1 = tagId
+    }
+    func tag2(tagId:String){
+        self.tag2 = tagId
     }
     
     func enableAllBtn(){

@@ -126,4 +126,32 @@ class forum {
         }
     }
     
+    func postTopic(){
+        let par = [
+            "data":[
+                "type":"discussions",
+                "attributes":[
+                    "title":"发帖测试",
+                    "content":"发帖测试c"
+                ],
+                "relationships":[
+                    "tags":[
+                        "data":[
+                            ["type":"tags","id":"22"],
+                            ["type":"tags","id":"11"]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let header = ["Authorization": defaults.objectForKey("token") as! String,"Content-Type": "application/vnd.api+json"]
+        print(header)
+        print(par)
+        Alamofire.request(.POST, "http://bbs.lzqstd.net/api/discussions",headers:header,parameters:par,encoding: .JSON).responseJSON{(result) in
+                    print(result)
+        }
+        
+    }
+    
 }
