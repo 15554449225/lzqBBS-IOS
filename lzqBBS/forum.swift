@@ -145,7 +145,8 @@ class forum {
             ]
         ]
         let defaults = NSUserDefaults.standardUserDefaults()
-        let header = ["Authorization": defaults.objectForKey("token") as! String,"Content-Type": "application/vnd.api+json"]
+        let Token:String = defaults.objectForKey("token") as! String
+        let header = ["Authorization": "Token \(Token)","Content-Type": "application/vnd.api+json"]
         print(header)
         print(par)
         Alamofire.request(.POST, "http://bbs.lzqstd.net/api/discussions",headers:header,parameters:par,encoding: .JSON).responseJSON{(result) in
