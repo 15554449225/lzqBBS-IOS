@@ -55,6 +55,9 @@ class AllViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发表", style: .Plain, target: self, action: "postTopic")
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.tableView.mj_header.beginRefreshing()
+    }
     
 
     func postTopic(){

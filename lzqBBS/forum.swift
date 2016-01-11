@@ -126,20 +126,17 @@ class forum {
         }
     }
     
-    func postTopic(){
+    func postTopic(title:String,content:String,tags:[Dictionary<String,String>],callback:(isOk:Bool)->Void){
         let par = [
             "data":[
                 "type":"discussions",
                 "attributes":[
-                    "title":"发帖测试",
-                    "content":"发帖测试c"
+                    "title":title,
+                    "content":content
                 ],
                 "relationships":[
                     "tags":[
-                        "data":[
-                            ["type":"tags","id":"22"],
-                            ["type":"tags","id":"11"]
-                        ]
+                        "data":tags
                     ]
                 ]
             ]
@@ -147,10 +144,15 @@ class forum {
         let defaults = NSUserDefaults.standardUserDefaults()
         let Token:String = defaults.objectForKey("token") as! String
         let header = ["Authorization": "Token \(Token)","Content-Type": "application/vnd.api+json"]
-        print(header)
-        print(par)
-        Alamofire.request(.POST, "http://bbs.lzqstd.net/api/discussions",headers:header,parameters:par,encoding: .JSON).responseJSON{(result) in
-                    print(result)
+        Alamofire.request(.POST, "http://bbs.lzqstd.net/api/discussions",headers:header,parameters:par,encoding: .JSON).responseJSON{(response) in
+            if let res = response.result.value{
+                let jsonStr = JSON(res)
+                if(jsonStr["data"] != nil){
+                    callback(isOk:true)
+                }else{
+                    callback(isOk:false)
+                }
+            }
         }
         
     }
