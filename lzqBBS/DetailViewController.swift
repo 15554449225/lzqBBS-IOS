@@ -26,18 +26,39 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
     @IBOutlet var postNum: UILabel!
     
     override func viewDidLoad() {
-        self.showLoadingView()
+
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "回复", style: .Plain, target: self, action: "replyTopic")
         
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.tableFooterView = UIView()
         self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.estimatedRowHeight = 90;
         
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.setContent()
+    }
+    
+    func replyTopic(){
+        self.performSegueWithIdentifier("replySegue", sender: nil)
+    }
+    
+    func setContent(){
+        self.showLoadingView()
         let myForum = forum()
         myForum.getDetailById(Id!, callback: {(result) in
             if result == true{
                 self.postTitle.text = myForum.postInfo!["title"]
+                self.navigationItem.title = myForum.postInfo!["title"]
                 self.postNum.text = myForum.postInfo!["commentsCount"]
                 self.postTags.text = myForum.postInfo!["tag"]
                 
@@ -48,14 +69,16 @@ class DetailViewController: UIViewController,UITableViewDataSource, UITableViewD
                 self.hideLoadinView()
             }
         })
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "replySegue"){
+            let viewController = segue.destinationViewController as! replyViewController
+            viewController.topicId = self.Id!
+        }
     }
+    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return self.section

@@ -256,16 +256,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply_icon" translatesAutoresizingMaskIntoConstraints="NO" id="a6k-NR-04e">
-                                <rect key="frame" x="529" y="106" width="14" height="15"/>
+                                <rect key="frame" x="556" y="106" width="14" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="UKY-Pl-jqj"/>
                                     <constraint firstAttribute="height" constant="15" id="v9k-bN-N8F"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yw-H1-qHM">
-                                <rect key="frame" x="551" y="105" width="9" height="16"/>
+                                <rect key="frame" x="578" y="105" width="15" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="9" id="1yQ-gs-20v"/>
+                                    <constraint firstAttribute="width" constant="15" id="1yQ-gs-20v"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.76012073859999996" green="0.76012073859999996" blue="0.76012073859999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -342,7 +342,7 @@
                             <constraint firstItem="a6k-NR-04e" firstAttribute="top" secondItem="2df-H8-0IN" secondAttribute="top" constant="106" id="8ag-7R-Rva"/>
                             <constraint firstItem="JT6-g1-TCs" firstAttribute="leading" secondItem="2df-H8-0IN" secondAttribute="leading" id="8vz-50-tM4"/>
                             <constraint firstItem="1mH-Ps-oqW" firstAttribute="leading" secondItem="2df-H8-0IN" secondAttribute="leadingMargin" constant="-5" id="9db-wN-sZB"/>
-                            <constraint firstAttribute="trailing" secondItem="a6k-NR-04e" secondAttribute="trailing" constant="57" id="DJz-Bg-pf6"/>
+                            <constraint firstAttribute="trailing" secondItem="a6k-NR-04e" secondAttribute="trailing" constant="30" id="DJz-Bg-pf6"/>
                             <constraint firstAttribute="trailing" secondItem="JT6-g1-TCs" secondAttribute="trailing" id="Dci-ng-G83"/>
                             <constraint firstItem="JT6-g1-TCs" firstAttribute="centerX" secondItem="3UH-Ld-uHA" secondAttribute="centerX" id="DhQ-Lt-Bos"/>
                             <constraint firstItem="3Yw-H1-qHM" firstAttribute="leading" secondItem="a6k-NR-04e" secondAttribute="trailing" constant="8" symbolic="YES" id="IJt-ut-VQc"/>
@@ -359,11 +359,58 @@
                         <outlet property="postTags" destination="1mH-Ps-oqW" id="YN4-Ed-Tnc"/>
                         <outlet property="postTitle" destination="3UH-Ld-uHA" id="oOS-Kh-ylZ"/>
                         <outlet property="tableView" destination="JT6-g1-TCs" id="BDh-Ti-qjj"/>
+                        <segue destination="tXz-F2-fJY" kind="show" identifier="replySegue" id="GNV-E9-zTv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBw-B9-VNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1840" y="-911"/>
+        </scene>
+        <!--Reply View Controller-->
+        <scene sceneID="Keu-AH-Eve">
+            <objects>
+                <viewController id="tXz-F2-fJY" customClass="replyViewController" customModule="lzqBBS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dbb-TH-UaI"/>
+                        <viewControllerLayoutGuide type="bottom" id="7dw-JW-n9J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lPd-mG-XU6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCq-28-6ho">
+                                <rect key="frame" x="495" y="319" width="30" height="30"/>
+                                <state key="normal" title="回复"/>
+                                <connections>
+                                    <action selector="replyBtn:" destination="tXz-F2-fJY" eventType="touchUpInside" id="rAE-G3-xm0"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ams-83-D7L">
+                                <rect key="frame" x="20" y="99" width="560" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KU4-bt-e8X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="xCq-28-6ho" secondAttribute="trailing" constant="55" id="5Xu-BV-Xjy"/>
+                            <constraint firstItem="Ams-83-D7L" firstAttribute="leading" secondItem="lPd-mG-XU6" secondAttribute="leading" constant="20" id="DLw-ye-1T6"/>
+                            <constraint firstAttribute="trailing" secondItem="Ams-83-D7L" secondAttribute="trailing" constant="20" id="FpA-Us-QVo"/>
+                            <constraint firstItem="Ams-83-D7L" firstAttribute="top" secondItem="Dbb-TH-UaI" secondAttribute="bottom" constant="35" id="GU9-08-EI7"/>
+                            <constraint firstItem="xCq-28-6ho" firstAttribute="top" secondItem="Ams-83-D7L" secondAttribute="bottom" constant="20" id="xxl-gh-dpr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="replyContent" destination="Ams-83-D7L" id="7fx-WN-JlQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nK5-5u-3N0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2531" y="-911"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="bjv-Ii-XHc">
@@ -384,7 +431,7 @@
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="内容" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zv3-Pr-zfc">
                                 <rect key="frame" x="20" y="132" width="560" height="177"/>
-                                <color key="backgroundColor" red="0.5894505033557047" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="177" id="Sjk-5T-xvj"/>
                                 </constraints>

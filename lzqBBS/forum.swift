@@ -144,7 +144,7 @@ class forum {
         let defaults = NSUserDefaults.standardUserDefaults()
         let Token:String = defaults.objectForKey("token") as! String
         let header = ["Authorization": "Token \(Token)","Content-Type": "application/vnd.api+json"]
-        Alamofire.request(.POST, "http://bbs.lzqstd.net/api/discussions",headers:header,parameters:par,encoding: .JSON).responseJSON{(response) in
+        Alamofire.request(.POST, Config().getApiDomain()+"/discussions",headers:header,parameters:par,encoding: .JSON).responseJSON{(response) in
             if let res = response.result.value{
                 let jsonStr = JSON(res)
                 if(jsonStr["data"] != nil){
@@ -155,6 +155,39 @@ class forum {
             }
         }
         
+    }
+    
+    func replyTopic(topicId:String,replyContent:String,callback:(isOk:Bool) -> Void){
+        let par = [
+            "data" :[
+                "type":"posts",
+                "attributes":[
+                    "content":replyContent
+                ],
+                "relationships":[
+                    "discussion":[
+                        "data":[
+                            "type":"discussions",
+                            "id":topicId
+                        ]
+                    ]
+                ]
+            ]
+        ]
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let Token:String = defaults.objectForKey("token") as! String
+        let header = ["Authorization": "Token \(Token)","Content-Type": "application/vnd.api+json"]
+        Alamofire.request(.POST, Config().getApiDomain()+"/posts",headers:header,parameters:par,encoding: .JSON).responseJSON{(response) in
+            if let resp = response.result.value{
+                let jsonStr = JSON(resp)
+                if(jsonStr["data"] != nil){
+                    callback(isOk:true)
+                }else{
+                    callback(isOk:false)
+                }
+            }
+        }
     }
     
 }

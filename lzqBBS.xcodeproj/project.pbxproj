@@ -30,6 +30,7 @@
 		9028B7071C3D7EB2000343B6 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028B6F21C3D7EB2000343B6 /* UIScrollView+MJExtension.m */; };
 		9028B7081C3D7EB2000343B6 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028B6F41C3D7EB2000343B6 /* UIScrollView+MJRefresh.m */; };
 		9028B7091C3D7EB2000343B6 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028B6F61C3D7EB2000343B6 /* UIView+MJExtension.m */; };
+		908A398D1C448C52009BAD9F /* replyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908A398C1C448C52009BAD9F /* replyViewController.swift */; };
 		90A2BB3D1C378AF600BF2244 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A2BB3C1C378AF600BF2244 /* PostCell.swift */; };
 		90A56E201C2A22E00082108B /* forum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A56E1F1C2A22E00082108B /* forum.swift */; };
 		90A90E1E1C28ECFF008A222F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A90E1D1C28ECFF008A222F /* User.swift */; };
@@ -90,6 +91,7 @@
 		9028B6F41C3D7EB2000343B6 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		9028B6F51C3D7EB2000343B6 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		9028B6F61C3D7EB2000343B6 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		908A398C1C448C52009BAD9F /* replyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = replyViewController.swift; sourceTree = "<group>"; };
 		90A2BB3C1C378AF600BF2244 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		90A56E1F1C2A22E00082108B /* forum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forum.swift; sourceTree = "<group>"; };
 		90A90E1D1C28ECFF008A222F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				9001D6711C3A52DE00DAACE5 /* DetailCell.swift */,
 				90BBEC131C3E5F4F003EF1BB /* LoginViewController.swift */,
 				90BBEC151C3E8B15003EF1BB /* PostViewController.swift */,
+				908A398C1C448C52009BAD9F /* replyViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				9028B7001C3D7EB2000343B6 /* MJRefreshBackNormalFooter.m in Sources */,
 				901F76FF1C2834C100F8B205 /* CateViewController.swift in Sources */,
 				9028B7031C3D7EB2000343B6 /* MJRefreshNormalHeader.m in Sources */,
+				908A398D1C448C52009BAD9F /* replyViewController.swift in Sources */,
 				9028B6FD1C3D7EB2000343B6 /* MJRefreshAutoNormalFooter.m in Sources */,
 				9028B6F81C3D7EB2000343B6 /* MJRefreshBackFooter.m in Sources */,
 				9028B6FE1C3D7EB2000343B6 /* MJRefreshAutoStateFooter.m in Sources */,
