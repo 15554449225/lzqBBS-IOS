@@ -24,8 +24,12 @@ class PostCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func updateCell(jsonStr:[String:String]){
+        self.Num.text = jsonStr["commentsCount"]
+        self.Time.text = jsonStr["startTime"]
+        self.Title.text = jsonStr["title"]
     }
 
 }

@@ -18,6 +18,7 @@ class AllViewController: UITableViewController {
     var seletedId:String?
     var data:[[String:String]]?
     var page:Int = 0
+    var referenceCell: PostCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,7 @@ class AllViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false;
         self.tableView.mj_header.beginRefreshing()
     }
     
@@ -87,9 +89,7 @@ class AllViewController: UITableViewController {
     //cell
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PrototypeCells", forIndexPath: indexPath) as! PostCell;
-        cell.Title.text = self.data![indexPath.row]["title"]
-        cell.Time.text = self.data![indexPath.row]["startTime"]
-        cell.Num.text = self.data![indexPath.row]["commentsCount"]
+        cell.updateCell(self.data![indexPath.row])
         return cell;
     }
 

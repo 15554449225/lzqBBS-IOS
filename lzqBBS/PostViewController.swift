@@ -118,7 +118,6 @@ class PostViewController: UIViewController,UITextViewDelegate {
         self.postContent.layer.borderColor = UIColor(red: 193/255, green: 193/255, blue: 192/255, alpha: 0.9).CGColor
         self.postContent.layer.cornerRadius = 6
         
-        
         self.postContent.delegate = self
         
         self.showLoadingView()
@@ -127,6 +126,9 @@ class PostViewController: UIViewController,UITextViewDelegate {
                 self.hideLoadinView()
             }
         }
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = true;
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {

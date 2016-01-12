@@ -53,7 +53,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzs-95-21V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="564"/>
+            <point key="canvasLocation" x="1119" y="564"/>
         </scene>
         <!--我-->
         <scene sceneID="0Kq-1t-iWC">
@@ -646,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sY-Hu-QbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2492" y="-159"/>
+            <point key="canvasLocation" x="1852" y="-1715"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="liD-Yt-gWb">
@@ -738,7 +738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmy-Jb-Rwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840" y="-159"/>
+            <point key="canvasLocation" x="1119" y="-1715"/>
         </scene>
     </scenes>
     <resources>
@@ -754,4 +754,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="OEz-YH-aGu"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.41996998094366333" green="0.54472516560622308" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
