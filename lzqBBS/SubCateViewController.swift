@@ -17,17 +17,26 @@ class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.frame = CGRect(x: 0, y: 110, width:UIScreen.mainScreen().bounds.width , height: UIScreen.mainScreen().bounds.height)
         self.tableView = UITableView(frame: self.view.frame, style:UITableViewStyle.Plain)
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
+        self.tableView?.backgroundColor = UIColor.blackColor()
+        self.tableView?.tableFooterView = UIView()
         
         let nib = UINib(nibName: "SubCatTableViewCell", bundle: nil)
         self.tableView?.registerNib(nib, forCellReuseIdentifier: "subCatTableViewCellXib")
         
         self.view.addSubview(self.tableView!)
+        self.tableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: refresh)
+//        self.tableView!.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: refresh)
         
     }
 
+    func refresh(){
+        self.tableView!.mj_footer.endRefreshing()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
