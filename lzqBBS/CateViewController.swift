@@ -37,6 +37,7 @@ class CateViewController:  PageController{
         menuBar.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.9)
         menuBar.registerClass(CustomMenuCell.self)
         
+        
         viewControllers = createViewControllers()
 
         // Do any additional setup after loading the view.

@@ -9,31 +9,47 @@
 /// tab 界面
 import UIKit
 
-class SubCateViewController: UIViewController {
+class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var str:String?
+    var tableView:UITableView?
+    var newArray = ["😄 Haha","🐱 猫咪","🐶 gougou","🎄 圣诞"];
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView = UITableView(frame: self.view.frame, style:UITableViewStyle.Plain)
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
         
+        let nib = UINib(nibName: "SubCatTableViewCell", bundle: nil)
+        self.tableView?.registerNib(nib, forCellReuseIdentifier: "subCatTableViewCellXib")
         
-        let textLabel = UILabel (frame:CGRectMake(self.view.frame.size.width/8,300,self.view.frame.size.width*3/4,300))
-        textLabel.text = title
-        textLabel.numberOfLines = 0
-        self.view.addSubview(textLabel)
+        self.view.addSubview(self.tableView!)
         
-        let tt = UILabel (frame:CGRectMake(self.view.frame.size.width/8,400,self.view.frame.size.width*3/4,300))
-        tt.text = str
-        self.view.addSubview(tt)
-
-        // Do any additional setup after loading the view.
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("subCatTableViewCellXib", forIndexPath: indexPath) as! SubCatTableViewCell;
+        cell.Num.text = "10"
+        cell.Title.text = newArray[indexPath.row]
+        cell.Time.text = newArray[indexPath.row]
+        return cell;
+    }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newArray.count
+    }
 
     /*
     // MARK: - Navigation

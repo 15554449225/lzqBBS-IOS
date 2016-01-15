@@ -41,6 +41,8 @@
 		90E9A23A1C281384002804E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90E9A2381C281384002804E5 /* Main.storyboard */; };
 		90E9A23C1C281384002804E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E9A23B1C281384002804E5 /* Assets.xcassets */; };
 		90E9A23F1C281384002804E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90E9A23D1C281384002804E5 /* LaunchScreen.storyboard */; };
+		90EC4DC71C490F2300190837 /* SubCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EC4DC51C490F2300190837 /* SubCatTableViewCell.swift */; };
+		90EC4DC81C490F2300190837 /* SubCatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC4DC61C490F2300190837 /* SubCatTableViewCell.xib */; };
 		90F316581C321C210087E230 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F316571C321C210087E230 /* Config.swift */; };
 		90FF68521C2FAA940090B086 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FF68511C2FAA940090B086 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +106,8 @@
 		90E9A23B1C281384002804E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90E9A23E1C281384002804E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90E9A2401C281384002804E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90EC4DC51C490F2300190837 /* SubCatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubCatTableViewCell.swift; sourceTree = "<group>"; };
+		90EC4DC61C490F2300190837 /* SubCatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubCatTableViewCell.xib; sourceTree = "<group>"; };
 		90F316571C321C210087E230 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		90FF68511C2FAA940090B086 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9C5F513880197BB765DF86BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				90BBEC131C3E5F4F003EF1BB /* LoginViewController.swift */,
 				90BBEC151C3E8B15003EF1BB /* PostViewController.swift */,
 				908A398C1C448C52009BAD9F /* replyViewController.swift */,
+				90EC4DC51C490F2300190837 /* SubCatTableViewCell.swift */,
+				90EC4DC61C490F2300190837 /* SubCatTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				90E9A23F1C281384002804E5 /* LaunchScreen.storyboard in Resources */,
 				90E9A23C1C281384002804E5 /* Assets.xcassets in Resources */,
 				9028B7051C3D7EB2000343B6 /* MJRefresh.bundle in Resources */,
+				90EC4DC81C490F2300190837 /* SubCatTableViewCell.xib in Resources */,
 				90E9A23A1C281384002804E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +456,7 @@
 				901F77011C284D5600F8B205 /* SubCateViewController.swift in Sources */,
 				9028B6FB1C3D7EB2000343B6 /* MJRefreshHeader.m in Sources */,
 				9001D6721C3A52DE00DAACE5 /* DetailCell.swift in Sources */,
+				90EC4DC71C490F2300190837 /* SubCatTableViewCell.swift in Sources */,
 				90BBEC161C3E8B15003EF1BB /* PostViewController.swift in Sources */,
 				90FF68521C2FAA940090B086 /* DetailViewController.swift in Sources */,
 				9028B6F71C3D7EB2000343B6 /* MJRefreshAutoFooter.m in Sources */,
