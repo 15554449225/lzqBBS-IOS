@@ -8,34 +8,48 @@
 
 /// tab 界面
 import UIKit
+import SwiftyJSON
 
 class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    var str:String?
+    var tagNameEn:String?
     var tableView:UITableView?
-    var newArray = ["😄 Haha","🐱 猫咪","🐶 gougou","🎄 圣诞"];
+    
+    var SectionNum:Int = 0
+    var seletedId:String?
+    var data:[[String:String]]?
+    var page:Int = 0
+    var referenceCell: SubCatTableViewCell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.frame = CGRect(x: 0, y: 110, width:UIScreen.mainScreen().bounds.width , height: UIScreen.mainScreen().bounds.height)
+        self.view.frame = CGRect(x: 0, y: 110, width:UIScreen.mainScreen().bounds.width , height: UIScreen.mainScreen().bounds.height-150)
         self.tableView = UITableView(frame: self.view.frame, style:UITableViewStyle.Plain)
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
-        self.tableView?.backgroundColor = UIColor.blackColor()
         self.tableView?.tableFooterView = UIView()
         
         let nib = UINib(nibName: "SubCatTableViewCell", bundle: nil)
         self.tableView?.registerNib(nib, forCellReuseIdentifier: "subCatTableViewCellXib")
         
         self.view.addSubview(self.tableView!)
-        self.tableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: refresh)
-//        self.tableView!.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: refresh)
+        self.tableView!.mj_header = MJRefreshNormalHeader(refreshingBlock: refreshHeader)
+        self.tableView!.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: nextPage)
+        
+        //开始刷新数据
+        self.tableView!.mj_header.beginRefreshing()
+        //加载数据
+        refreshHeader()
+        
+        //设置bar字体颜色
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.backgroundColor = UIColor.blackColor()
         
     }
-
-    func refresh(){
-        self.tableView!.mj_footer.endRefreshing()
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false;
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,21 +57,56 @@ class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return self.SectionNum
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("subCatTableViewCellXib", forIndexPath: indexPath) as! SubCatTableViewCell;
-        cell.Num.text = "10"
-        cell.Title.text = newArray[indexPath.row]
-        cell.Time.text = newArray[indexPath.row]
+        cell.updateCell(self.data![indexPath.row])
         return cell;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newArray.count
+        return self.data!.count
+    }
+    
+    //刷新数据的函数
+    func refreshHeader(){
+        let allData = forum()
+        allData.getByTag(0,tag: self.tagNameEn!, callback: {(result) in
+            self.SectionNum = 1
+            self.data = result
+            if(self.data?.count < 20){
+                self.tableView?.mj_footer = nil
+            }
+            print(self.data?.count)
+            dispatch_async(dispatch_get_main_queue()) {
+                //获取数据后，重新加载tableview 的data
+                self.tableView!.reloadData()
+            }
+            self.tableView!.mj_header.endRefreshing()
+        })
+    }
+    
+    func nextPage(){
+        self.page += 1
+        self.tableView!.mj_footer.endRefreshing()
+        let allData = forum()
+        allData.getByTag(self.page,tag: self.tagNameEn!, callback: {(result) in
+            print(result)
+            for(var i = 0 ; i < result.count ; i++){
+                self.data?.append(result[i])
+            }
+            // dispatch_async(dispatch_get_main_queue()) {
+            self.tableView!.reloadData()
+            //}
+            self.tableView!.mj_footer.endRefreshing()
+            if(self.data?.count < 40){
+                self.tableView?.mj_footer = nil
+            }
+        })
     }
 
     /*

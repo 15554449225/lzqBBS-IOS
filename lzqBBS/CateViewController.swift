@@ -53,10 +53,14 @@ class CateViewController:  PageController{
     }
     
     func createViewControllers() -> [UIViewController]{
-        let names = ["name1","name2","name3","name4"]
-        return names.map{name -> UIViewController in
+//        let names = ["name1","name2","name3","name4"]
+        
+        let tags = forum().getTags()
+        
+        return tags.map{tag -> UIViewController in
             let viewController = SubCateViewController()
-            viewController.title = name
+            viewController.title = tag["tagName"]
+            viewController.tagNameEn = tag["tagNameEn"]
             return viewController
         }
     }

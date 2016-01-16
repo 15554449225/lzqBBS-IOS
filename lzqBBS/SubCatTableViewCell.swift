@@ -23,5 +23,10 @@ class SubCatTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    func updateCell(jsonStr:[String:String]){
+        self.Num.text = jsonStr["commentsCount"]
+        self.Time.text = jsonStr["startTime"]
+        self.Title.text = jsonStr["title"]
+    }
     
 }

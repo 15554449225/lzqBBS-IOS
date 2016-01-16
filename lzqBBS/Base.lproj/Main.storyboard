@@ -80,6 +80,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8ds-A4-Un3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.24313725490196078" green="0.33725490196078434" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="A4K-MI-0i3" kind="relationship" relationship="rootViewController" id="WVh-GG-uDO"/>
@@ -117,6 +118,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.24313725490196078" green="0.33725490196078434" blue="0.7411442911896301" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="y5e-Lc-hAa">
                         <rect key="frame" x="0.0" y="556" width="600" height="44"/>

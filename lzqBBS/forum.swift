@@ -15,6 +15,24 @@ class forum {
     var postInfo:Dictionary<String,String>?
     var commentsInfo:[[String:String]] = [["username":"nil"]]
     
+    
+    func getTags() -> [[String:String]]{
+        let tags = [
+            ["tagName":"General","tagNameEn":"general"],
+            ["tagName":"蓝之青","tagNameEn":"LzqStudio"],
+            ["tagName":"App","tagNameEn":"app"],
+            ["tagName":"灌水","tagNameEn":"post"],
+            ["tagName":"前端","tagNameEn":"foreEnd"],
+            ["tagName":"后端","tagNameEn":"backEnd"],
+            ["tagName":"智能硬件","tagNameEn":"smartDevice"],
+            ["tagName":"系统","tagNameEn":"system"],
+            ["tagName":"经验","tagNameEn":"experience"],
+            ["tagName":"测试","tagNameEn":"test"],
+            ["tagName":"需求","tagNameEn":"requirement"],
+        ]
+        return tags
+    }
+    
     func getById(id:String,callback:(result:AnyObject) -> Void){
         let url:String = Config().getApiDomain()+"/discussions/\(id)"
         Alamofire.request(.GET,url).responseJSON{(response)in
@@ -126,6 +144,29 @@ class forum {
         }
     }
     
+    
+    func getByTag(page:Int,tag:String,callback:(result:[[String:String]])->Void){
+        var data:[[String:String]] = [["id":"nil","title":"nil","commentsCount":"nil","startTime":"nil","lastTime":"nil"]]
+        let url:String = Config().getApiDomain()+"/discussions?include=startUser,lastUser,startPost,tags&&page[offset]=\(page*20)&sort=-lastTime&filter[q]=tag:\(tag)"
+        Alamofire.request(.GET,url).responseJSON{ (response) in
+            if let resp = response.result.value{
+                let jsonStr = JSON(resp)
+                data.removeAll()
+                for(_,subJson):(String,JSON) in jsonStr["data"]{
+                    data.append([
+                        "id":subJson["id"].string!,
+                        "title":subJson["attributes"]["title"].string!,
+                        "commentsCount":String(subJson["attributes"]["commentsCount"].int!),
+                        "startTime":subJson["attributes"]["startTime"].string!,
+                        "lastTime":subJson["attributes"]["lastTime"].string!
+                        ])
+                }
+                callback(result: data)
+            }
+        }
+    }
+    
+    
     func postTopic(title:String,content:String,tags:[Dictionary<String,String>],callback:(isOk:Bool)->Void){
         let par = [
             "data":[
@@ -189,5 +230,4 @@ class forum {
             }
         }
     }
-    
 }

@@ -133,7 +133,6 @@ class AllViewController: UITableViewController {
         self.tableView.mj_footer.endRefreshing()
         let allData = forum()
         allData.getAllArr(self.page, callback: {(result) in
-            self.SectionNum = 1
             for(var i = 0 ; i<20 ; i++){
                 self.data?.append(result[i])
             }
