@@ -71,6 +71,27 @@ class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.data!.count
     }
+    //点击事件
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        self.seletedId = self.data![indexPath.row]["id"]
+        //跳转
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("subDetailId") as! DetailViewController
+        vc.Id = self.seletedId
+        self.presentViewController(vc, animated: true, completion: nil)
+        
+        
+//        performSegueWithIdentifier("subSegue", sender: nil)
+    }
+    
+    //跳转函数，上方调用的
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "subSegue" {
+//            let viewController = segue.destinationViewController as! DetailViewController
+//            segue.destinationViewController.hidesBottomBarWhenPushed = true
+//            viewController.Id = seletedId
+//        }
+//    }
     
     //刷新数据的函数
     func refreshHeader(){
