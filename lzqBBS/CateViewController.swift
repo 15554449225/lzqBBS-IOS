@@ -15,7 +15,7 @@ class CustomMenuCell: MenuCell {
     
     required init(frame: CGRect) {
         super.init(frame: frame)
-        contentInset = UIEdgeInsets(top: 0, left: 40, bottom: 1, right: 40)
+        contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,8 +24,8 @@ class CustomMenuCell: MenuCell {
     
     override func updateData() {
         super.updateData()
-        backgroundColor = UIColor.grayColor()
-        titleLabel.textColor = selected ? UIColor.blackColor() : UIColor.greenColor()
+        backgroundColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 0.9)
+        titleLabel.textColor = selected ? UIColor(red: 0/255, green: 0/255, blue: 255/255, alpha: 0.9) : UIColor.grayColor()
     }
 }
 
@@ -36,8 +36,6 @@ class CateViewController:  PageController{
         
         menuBar.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.9)
         menuBar.registerClass(CustomMenuCell.self)
-        
-        
         viewControllers = createViewControllers()
 
         // Do any additional setup after loading the view.

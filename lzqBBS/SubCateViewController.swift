@@ -91,7 +91,6 @@ class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDat
             if(self.data?.count < 20){
                 self.tableView?.mj_footer = nil
             }
-            print(self.data?.count)
             dispatch_async(dispatch_get_main_queue()) {
                 //获取数据后，重新加载tableview 的data
                 self.tableView!.reloadData()
