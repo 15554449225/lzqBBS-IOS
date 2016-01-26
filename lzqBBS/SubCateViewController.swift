@@ -85,7 +85,19 @@ class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDat
     //刷新数据的函数
     func refreshHeader(){
         let allData = forum()
-        allData.getByTag(0,tag: self.tagNameEn!, callback: {(result) in
+//        allData.getByTag(0,tag: self.tagNameEn!, callback: {(result) in
+//            self.SectionNum = 1
+//            self.data = result
+//            if(self.data?.count < 20){
+//                self.tableView?.mj_footer = nil
+//            }
+//            dispatch_async(dispatch_get_main_queue()) {
+//                //获取数据后，重新加载tableview 的data
+//                self.tableView!.reloadData()
+//            }
+//            self.tableView!.mj_header.endRefreshing()
+//        })
+        allData.getByTag(0, tag: self.tagNameEn!) { (result) -> Void in
             self.SectionNum = 1
             self.data = result
             if(self.data?.count < 20){
@@ -96,7 +108,7 @@ class SubCateViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 self.tableView!.reloadData()
             }
             self.tableView!.mj_header.endRefreshing()
-        })
+        }
     }
     
     func nextPage(){
